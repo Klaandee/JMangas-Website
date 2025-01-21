@@ -10,8 +10,13 @@ export default {
     extend: {
       colors: {
         background: "var(--background)",
-        foreground: "var(--foreground)",
       },
+      fontFamily: {
+        poppins: ['Ubuntu', 'sans-serif'],
+        manrope: ['Manrope', 'sans-serif'],
+        ubuntu: ['Ubuntu', 'sans-serif'],
+        rubik: ['Rubik', 'sans-serif']
+      }
     },
   },
   plugins: [],
