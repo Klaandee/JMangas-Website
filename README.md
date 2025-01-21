@@ -1,4 +1,2 @@
 ## JMangas Website
-[x] Header
-[ ] Hero
-[ ] Footer
+**NextJS**, **TailwindCSS**, **TypeScript**.

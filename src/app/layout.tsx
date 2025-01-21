@@ -4,7 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "JMangas",
+  title: "JMangas | Mangas gratis en español y sin anuncios",
   description: "Undefined",
 };
 
