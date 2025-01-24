@@ -128,3 +128,14 @@ body {
 .footerDownLinks span a {
   @apply underline;
 }
+
+/* Manga Creation Page */
+
+.formCont label {
+  @apply font-poppins font-semibold;
+}
+
+.mangaCreationTxtInput {
+  @apply bg-[#202020] outline-none rounded-xl;
+  padding: 5px 10px;
+}
