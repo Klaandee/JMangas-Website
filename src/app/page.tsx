@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { getUser } from "@/app/functions/discorduser";
 import Image from "next/image";
+import Hero from "@/components/page/Hero";
 
 export default function Home() {
   const [user, setUser] = useState<string>("Unkown");
@@ -23,9 +24,10 @@ export default function Home() {
   }, []);
   return (
     <main className="">
-      <h1>Content</h1>
-
-      <h1>User: {user}</h1>
+      <Hero />
+      <h1 className="text-center">Admin User: {user}</h1>
+      {/* Nota para el papu: Hacer que este texto aparezca unicamente cuando el admin esta logeado <3
+       asi evitamos que los usuarios lo vean. NYAA~*/}
     </main>
   );
 }
