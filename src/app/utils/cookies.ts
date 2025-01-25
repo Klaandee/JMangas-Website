@@ -1,10 +1,8 @@
 const setCookie = (nombre: string, valor: string, ms: number) => {
-  const fecha = new Date();
-  fecha.setTime(fecha.getTime() + ms);
-  const expiracion = "expires=" + fecha.toUTCString();
+  const maxAge = ms / 1000; // Convertir ms a segundos
   document.cookie = `${encodeURIComponent(nombre)}=${encodeURIComponent(
     valor
-  )}; ${expiracion}; path=/; SameSite=Lax`;
+  )}; max-age=${maxAge}; path=/; SameSite=Lax`;
 };
 
 const getCookie = (nombre: string) => {

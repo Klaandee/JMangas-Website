@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getUser } from "@/app/functions/discorduser";
-import { setCookie, getCookie } from "@/app/functions/cookies";
+import { getUser } from "@/app/utils/discorduser";
+import { setCookie, getCookie } from "@/app/utils/cookies";
 
 function handleDiscordAccessToken() {
   const params = new URLSearchParams(window.location.search);
