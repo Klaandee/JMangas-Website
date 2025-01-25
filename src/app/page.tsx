@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { getUser } from "@/app/utils/discorduser";
 import { setCookie, getCookie } from "@/app/utils/cookies";
+import Hero from "@/components/page/Hero";
 
 function handleDiscordAccessToken() {
   const params = new URLSearchParams(window.location.search);
