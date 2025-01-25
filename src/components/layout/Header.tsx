@@ -14,7 +14,7 @@ export default function Header() {
       <div className="flex items-center justify-between w-full max-w-6xl mx-auto">
         <div className="">
           <h2 className="font-extrabold text-4xl">
-            J<span className="text-[var(--primary-color)]">Mangas</span>
+            J<span className="gradientText">Mangas</span>
           </h2>
         </div>
         <div className="">

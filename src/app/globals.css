@@ -5,12 +5,16 @@
 
 :root {
   --background: #202020;
-  --primary-color: #fffc09;
+  --primary-color: #711ab8;
 }
 
 body {
   background: var(--background);
   @apply text-white;
+}
+
+.gradientText {
+  @apply bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent;
 }
 
 /* Header */
@@ -123,4 +127,15 @@ body {
 
 .footerDownLinks span a {
   @apply underline;
+}
+
+/* Manga Creation Page */
+
+.formCont label {
+  @apply font-poppins font-semibold;
+}
+
+.mangaCreationTxtInput {
+  @apply bg-[#202020] outline-none rounded-xl;
+  padding: 5px 10px;
 }

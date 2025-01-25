@@ -45,9 +45,10 @@ export default function Home() {
 
   return (
     <main className="">
-      <h1>Content</h1>
-
-      <h1>User: {user?.username}</h1>
+      <Hero />
+      <h2 className="text-center">Admin User: {user?.username}</h2>
+      {/* Nota para el papu: Hacer que este texto aparezca unicamente cuando el admin esta logeado <3
+       asi evitamos que los usuarios lo vean. NYAA~*/}
     </main>
   );
 }
