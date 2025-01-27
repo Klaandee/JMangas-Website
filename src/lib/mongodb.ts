@@ -7,31 +7,30 @@ if (!MONGODB_URI) {
   );
 }
 
-let cached = global.mongoose;
+let globalForMongoose = global as typeof globalThis & {
+  mongoose: {
+    conn: mongoose.Mongoose | null;
+    promise: Promise<mongoose.Mongoose> | null;
+  };
+};
 
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
+if (!globalForMongoose.mongoose) {
+  globalForMongoose.mongoose = { conn: null, promise: null };
 }
 
 async function dbConnect() {
-  if (cached.conn) {
-    return cached.conn;
+  if (globalForMongoose.mongoose.conn) {
+    return globalForMongoose.mongoose.conn;
   }
 
-  if (!cached.promise) {
-    const options = {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      bufferCommands: false,
-    };
-
-    cached.promise = mongoose
-      .connect(MONGODB_URI, options)
-      .then((mongoose) => mongoose);
+  if (!globalForMongoose.mongoose.promise) {
+    globalForMongoose.mongoose.promise = mongoose
+      .connect(MONGODB_URI, {})
+      .then((m) => m);
   }
 
-  cached.conn = await cached.promise;
-  return cached.conn;
+  globalForMongoose.mongoose.conn = await globalForMongoose.mongoose.promise;
+  return globalForMongoose.mongoose.conn;
 }
 
 export default dbConnect;

@@ -9,25 +9,27 @@ const admins = [
 ];
 
 export async function middleware(request: NextRequest) {
-  const token = request.cookies.get("access_token")?.value!;
-  if (!token) {
-    return NextResponse.redirect(
-      new URL("/api/auth/discord/login", request.url)
-    );
-  }
-  try {
-    const userdata = await getUser(token);
-
-    if (!admins.includes(userdata.id)) {
-      return NextResponse.json({
-        error: "No tienes permisos para acceder a esta página",
-      });
+  if (request.nextUrl.pathname.startsWith("/admin")) {
+    const token = request.cookies.get("access_token")?.value!;
+    if (!token) {
+      return NextResponse.redirect(
+        new URL("/api/auth/discord/login", request.url)
+      );
     }
-  } catch (error) {
-    console.error("Error obteniendo el usuario:", error);
+    try {
+      const userdata = await getUser(token);
+
+      if (!admins.includes(userdata.id)) {
+        return NextResponse.json({
+          error: "No tienes permisos para acceder a esta página",
+        });
+      }
+    } catch (error) {
+      console.error("Error obteniendo el usuario:", error);
+    }
   }
 }
 
 export const config = {
-  matcher: "/admin/:path*",
+  matcher: "/:path*",
 };
