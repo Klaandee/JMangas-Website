@@ -7,3 +7,4 @@ export const SALT_ROUNDS: number = Number(process.env.SALT_ROUNDS!);
 export const REDIRECT_URI: string = process.env.REDIRECT_URI!;
 export const IMGUR_CLIENT_ID: string = process.env.IMGUR_CLIENT_ID!;
 export const IMGUR_CLIENT_SECRET: string = process.env.IMGUR_CLIENT_SECRET!;
+export const MONGODB_URI: string = process.env.MONGODB_URI!;

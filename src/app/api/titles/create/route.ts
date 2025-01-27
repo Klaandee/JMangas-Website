@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
+import { uploadImage } from "@/app/utils/imgur";
 
 export const config = {
   api: {
@@ -8,29 +8,43 @@ export const config = {
 };
 
 export async function POST(req: Request) {
-  try {
-    const content = await req.formData();
-    const uploadedFiles = content.getAll("files") as File[];
+  const formData = await req.formData();
 
-    for (const file of uploadedFiles) {
-      fs.writeFileSync(file.name, Buffer.from(await file.arrayBuffer()));
-    }
+  const title = formData.get("title");
+  const description = formData.get("description");
+  const genres = formData.get("genres");
+  const cover = formData.get("cover") as File;
+  const banner = formData.get("banner") as File;
 
-    if (!uploadedFiles) {
-      return NextResponse.json(
-        { error: "No se subió ningún archivo" },
-        { status: 400 }
-      );
-    }
-
-    return NextResponse.json({
-      message: "Archivo subido exitosamente",
-    });
-  } catch (error) {
-    console.error("Error al subir archivo:", error);
+  if (!title || !description || !genres || !cover || !banner) {
     return NextResponse.json(
-      { error: "Error al subir archivo" },
-      { status: 500 }
+      { error: "Missing required fields" },
+      { status: 400 }
     );
   }
+
+  console.log({
+    title,
+    description,
+    genres,
+    cover,
+    banner,
+  });
+
+  const coverUrl = await uploadImage(cover as File);
+  const bannerUrl = await uploadImage(banner as File);
+
+  return NextResponse.json({
+    title,
+    description,
+    genres,
+    cover: {
+      url: coverUrl.data.link,
+      deletehash: coverUrl.data.deletehash,
+    },
+    banner: {
+      url: bannerUrl.data.link,
+      deletehash: bannerUrl.data.deletehash,
+    },
+  });
 }
