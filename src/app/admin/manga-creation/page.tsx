@@ -1,3 +1,9 @@
+import type { Metadata } from "next";
+
+export const metadata = {
+  title: 'JMangas | Publicar un manga'
+}
+
 export default function mangaCreationPage() {
   return (
     <main className="p-2">
