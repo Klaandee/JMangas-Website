@@ -1,9 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getUser } from "@/app/functions/discorduser";
-import Image from "next/image";
+import { getUser } from "@/app/utils/discorduser";
+import { setCookie, getCookie } from "@/app/utils/cookies";
 import Hero from "@/components/page/Hero";
-import { setCookie, getCookie } from "@/app/functions/cookies";
 import Modal from "@/components/utils/Modal";
 
 function handleDiscordAccessToken() {

@@ -3,7 +3,7 @@ import {
   DISCORD_CLIENT_SECRET,
   REDIRECT_URI,
 } from "@/config";
-import { DiscordStrategy } from "@/app/api/utils";
+import { DiscordStrategy } from "@/app/utils/discordstrategy";
 
 export async function GET(req: Request) {
   const discordStrategy = new DiscordStrategy({

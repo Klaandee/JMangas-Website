@@ -3,7 +3,6 @@ import {
   DISCORD_CLIENT_ID,
   DISCORD_CLIENT_SECRET,
 } from "@/config";
-import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
   let code = req.url
@@ -23,7 +22,6 @@ export async function GET(req: Request) {
       },
       body: new URLSearchParams({
         grant_type: "authorization_code",
-
         code: code,
         redirect_uri: REDIRECT_URI,
         client_id: DISCORD_CLIENT_ID,
@@ -43,8 +41,6 @@ export async function GET(req: Request) {
       refresh_token: string;
       scope: string;
     } = await response.json();
-
-    console.log(data);
 
     return new Response(null, {
       status: 307,
