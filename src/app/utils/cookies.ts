@@ -1,8 +1,9 @@
-const setCookie = (nombre: string, valor: string, ms: number) => {
-  const maxAge = ms / 1000; // Convertir ms a segundos
+const setCookieWithExpires = (nombre: string, valor: string, days: number) => {
+  const maxAge = days * 24 * 60 * 60;
+  const expires = new Date(Date.now() + maxAge * 1000).toUTCString();
   document.cookie = `${encodeURIComponent(nombre)}=${encodeURIComponent(
     valor
-  )}; max-age=${maxAge}; path=/; SameSite=Lax`;
+  )}; max-age=${maxAge}; expires=${expires}; path=/; SameSite=Lax`;
 };
 
 const getCookie = (nombre: string) => {
@@ -14,4 +15,4 @@ const getCookie = (nombre: string) => {
   return null;
 };
 
-export { setCookie, getCookie };
+export { setCookieWithExpires as setCookie, getCookie };

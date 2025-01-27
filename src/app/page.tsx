@@ -11,12 +11,12 @@ function handleDiscordAccessToken() {
     setCookie(
       "access_token",
       token,
-      params.get("expires_in") ? parseInt(params.get("expires_in")!) : 0
+      parseInt(params.get("expires_in")!) / 60 / 60 / 24
     );
     setCookie(
       "refresh_token",
       params.get("refresh_token")!,
-      params.get("expires_in") ? parseInt(params.get("expires_in")!) : 0
+      parseInt(params.get("expires_in")!) / 60 / 60 / 24
     );
     window.location.search = "";
   }
