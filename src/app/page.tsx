@@ -4,6 +4,7 @@ import { getUser } from "@/app/utils/discorduser";
 import { setCookie, getCookie } from "@/app/utils/cookies";
 import Hero from "@/components/page/Hero";
 import Modal from "@/components/utils/Modal";
+import MangaCard from "@/components/utils/MangaCard";
 
 function handleDiscordAccessToken() {
   const params = new URLSearchParams(window.location.search);
@@ -65,6 +66,7 @@ export default function Home() {
         title="hola"
         content={["hola vro"]}
       />
+      <MangaCard />
     </main>
   );
 }
