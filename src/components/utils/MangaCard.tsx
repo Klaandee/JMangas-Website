@@ -1,4 +1,7 @@
-export default function MangaCard() {
+export default function MangaCard({cover, title = "Manga Title"}: {
+  cover: string,
+  title: string
+}) {
   return (
     <div className="relative p-1 w-[12rem] h-auto">
       <div
@@ -8,13 +11,13 @@ export default function MangaCard() {
         }}
       >
         <img
-          src="https://cdnjmangas.vercel.app/jmangas/mangas/covers/mushoku-tensei.jpg"
+          src={cover}
           alt="Mushoku Tensei"
           className="rounded-lg"
         />
       </div>
       <div className="text-center">
-        <h2 className="font-semibold text-xl">Mushoku Tensei</h2>
+        <h2 className="font-semibold text-xl">{title}</h2>
       </div>
       <style>
         {`

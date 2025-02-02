@@ -66,7 +66,8 @@ export default function Home() {
         title="hola"
         content={["hola vro"]}
       />
-      <MangaCard />
+      {/* Comentare esto porque sino se rompe todo */}
+      {/* <MangaCard /> */}
     </main>
   );
 }
